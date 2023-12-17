@@ -65,5 +65,4 @@ class Adapter(var noteList : ArrayList<NoteEntity>) : RecyclerView.Adapter<Adapt
 
 
     }
-
 }
