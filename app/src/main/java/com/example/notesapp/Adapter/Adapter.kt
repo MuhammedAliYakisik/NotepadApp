@@ -41,7 +41,29 @@ class Adapter(var noteList : ArrayList<NoteEntity>) : RecyclerView.Adapter<Adapt
 
 
         }
+        holder.binding.deletebutton.setOnClickListener {
+            val note = noteList[position].id ?:return@setOnClickListener
+            if (note != null) {
+                GlobalScope.launch(Dispatchers.IO) {
+                    val db = Room.databaseBuilder(
+                        holder.itemView.context.applicationContext,
+                        NoteDatabase::class.java,
+                        "Notes"
+                    ).build()
+                    val dao = db.noteDao()
+                    dao.deletebyId(note)
+                }
+                noteList.removeAt(position)
+                notifyItemRemoved(position)
+
+
+            }
+
+
+        }
+
 
 
     }
+
 }
