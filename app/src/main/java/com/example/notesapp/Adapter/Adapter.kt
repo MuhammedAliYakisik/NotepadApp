@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.example.notesapp.Activity.SaveActivity
 import com.example.notesapp.Room.NoteDatabase
 import com.example.notesapp.Room.NoteEntity
 import com.example.notesapp.Activity.ViewActivity
-import com.example.notesapp.databinding.ActivitySaveBinding
-import com.example.notesapp.databinding.ActivityViewBinding
+import com.example.notesapp.Activity.UpdateActivity
 import com.example.notesapp.databinding.RecyclerRowBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -61,6 +59,17 @@ class Adapter(var noteList : ArrayList<NoteEntity>) : RecyclerView.Adapter<Adapt
 
 
             }
+
+
+        }
+        holder.binding.updatebutton.setOnClickListener {
+            val intent = Intent(holder.itemView.context, UpdateActivity::class.java)
+            intent.putExtra("NoteId", noteList[position].id)
+            intent.putExtra("Title", noteList[position].title)
+            intent.putExtra("Content", noteList[position].content)
+            holder.itemView.context.startActivity(intent)
+
+
 
 
         }

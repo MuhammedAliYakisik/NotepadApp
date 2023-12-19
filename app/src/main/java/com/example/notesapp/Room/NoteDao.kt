@@ -22,8 +22,10 @@ import androidx.room.Update
         @Delete
         fun delete(note: NoteEntity)
 
+
         @Update
-        fun update(note: NoteEntity)
+        suspend fun update(note: NoteEntity)
+
 
 
 

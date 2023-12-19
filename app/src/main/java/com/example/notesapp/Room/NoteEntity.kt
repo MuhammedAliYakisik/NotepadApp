@@ -10,15 +10,20 @@ data class NoteEntity(
 
 
     @ColumnInfo("title")
-        val title : String,
-
+    val title: String,
     @ColumnInfo("content")
-        val content : String,)
+    val content: String,
+
+    @PrimaryKey
+        (autoGenerate = true,)
+    var id : Long = 0
+
+    )
+
 
     {
-        @PrimaryKey
-            (autoGenerate = true,)
-        var id : Long = 0
+
+
 
 
     }
